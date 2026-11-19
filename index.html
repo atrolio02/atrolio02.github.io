@@ -81,6 +81,7 @@ dl, dd { margin: 0; }
 .cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
 .cols h4 { margin: 0 0 8px; font: 500 12px/1.4 var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
 .cols p { font-size: 15.5px; line-height: 1.65; }
+.cols.two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 760px; }
 
 .steps { display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); border-top: 2px solid var(--ink); margin: 0; padding: 0; list-style: none; counter-reset: step; }
 .steps li { padding: 16px 20px 4px 0; display: grid; gap: 6px; align-content: start; counter-increment: step; }
@@ -120,7 +121,7 @@ footer { padding: 24px 0 48px; display: flex; justify-content: space-between; ga
   .intro h1, .intro .lede, .intro .facts, .rail, .story, .contact h2, .contact .reach { grid-column: 1 / -1; }
   .rail { grid-template-columns: auto 1fr; align-items: start; column-gap: 28px; }
   .rail dl { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 24px; }
-  .cols { grid-template-columns: 1fr; gap: 20px; }
+  .cols, .cols.two { grid-template-columns: 1fr; gap: 20px; }
   .row .when { grid-column: 1 / -1; } .row .role { grid-column: 1 / span 8; } .row .figure { grid-column: 9 / -1; text-align: right; }
   .row .note { grid-column: 1 / -1; }
   .toolkit .group { grid-column: span 6; }
@@ -153,7 +154,7 @@ footer { padding: 24px 0 48px; display: flex; justify-content: space-between; ga
 
 <section class="intro grid">
   <h1>I sell technical products and build the <em>AI tools</em> that help teams sell them.</h1>
-  <p class="lede">I'm a solutions engineer in Dallas. I've run discovery, demos and proofs of concept for enterprise security buyers, carried a quota, and spent my nights shipping software: an AI job-matching pipeline, a meal-planning app on AWS, and a price tracker anyone can run for free.</p>
+  <p class="lede">I'm a solutions engineer in Dallas. I've run discovery, demos and proofs of concept for enterprise security buyers, carried a quota, and spent my nights shipping software: an AI job-matching pipeline, a meal-planning app, and a price tracker anyone can run for free.</p>
   <dl class="facts">
     <div><dt class="eyebrow">Focus</dt><dd>Solutions engineering, GTM automation, AI agents and MCP</dd></div>
     <div><dt class="eyebrow">Builds with</dt><dd>Python, TypeScript, AWS, GitHub Actions, Claude</dd></div>
@@ -197,16 +198,14 @@ footer { padding: 24px 0 48px; display: flex; justify-content: space-between; ga
     <dl>
       <div><dt class="eyebrow">Type</dt><dd>Consumer web app</dd></div>
       <div><dt class="eyebrow">Role</dt><dd>Founder: product, build and launch</dd></div>
-      <div><dt class="eyebrow">Stack</dt><dd>TypeScript / AWS Lambda / Cognito / DynamoDB / SES / CloudFormation / Claude on Amazon Bedrock</dd></div>
     </dl>
   </aside>
   <div class="story">
     <h3 id="p2">Cuoco</h3>
     <p class="pitch">A meal planner for people who want high-protein meals that fit their grocery budget: plan, shop, prep and store in one place.</p>
-    <div class="cols">
+    <div class="cols two">
       <div><h4>The problem</h4><p>Most meal planners ignore the grocery bill, and most budget advice ignores nutrition. Eating well on a budget meant juggling recipes, lists and spreadsheets every week.</p></div>
       <div><h4>What I built</h4><p>A web app that plans meals around calorie and protein targets, household and budget, then turns the plan into a grocery list. AI reads photos of recipe cards and pantry shelves, so people can add food without typing it in.</p></div>
-      <div><h4>How it runs</h4><p>Serverless on AWS and deployed through CloudFormation from GitHub. Accounts run on Cognito and data on DynamoDB, with email and text notifications. Photos are read once and never stored, and people review every AI result before it's saved.</p></div>
     </div>
     <ol class="steps" style="--n:4" aria-label="How Cuoco works">
       <li><span class="n"></span><span class="v">Plan</span><span class="d">meals built around your calorie and protein targets</span></li>
