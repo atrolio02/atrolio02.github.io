@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthony Trolio</title>
+<meta name="description" content="Anthony Trolio: solutions engineer and builder of AI tools for go-to-market teams, based in Dallas, Texas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Layout idea: a left-aligned page that reads like a deal sheet. Big name, one thesis line,
+     then the work as a pipeline (the thing he builds) and the record as a ledger (the thing he sells). */
+  --paper: #f5f6f9;
+  --ink: #0e1528;
+  --muted: #566075;
+  --line: #d7dce6;
+  --accent: #2443d6;
+  --panel: #eaedf4;
+  --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+  --body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0b1020; --ink: #e9ecf5; --muted: #98a2b8; --line: #252d44; --accent: #8aa2ff; --panel: #131a2e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0b1020; --ink: #e9ecf5; --muted: #98a2b8; --line: #252d44; --accent: #8aa2ff; --panel: #131a2e;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 400 17px/1.6 var(--body);
+}
+a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 2px; }
+a:hover { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+section { padding: 56px 0; border-top: 1px solid var(--line); }
+.label {
+  font: 600 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  margin: 0 0 22px;
+}
+h2 { font: 700 clamp(28px, 4vw, 40px)/1.1 var(--display); letter-spacing: -.02em; margin: 0 0 28px; text-wrap: balance; }
+h3 { font: 700 22px/1.2 var(--display); letter-spacing: -.01em; margin: 0 0 8px; }
+p { margin: 0; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* Hero */
+header { padding: 64px 0 48px; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 64px; }
+.mark { font: 600 13px/1 var(--mono); letter-spacing: .08em; }
+.links { display: flex; gap: 20px; flex-wrap: wrap; font-size: 15px; }
+h1 {
+  font: 800 clamp(56px, 11vw, 132px)/.88 var(--display); letter-spacing: -.045em; margin: 0 0 28px;
+}
+h1 span { display: block; color: var(--accent); }
+.thesis { font: 500 clamp(21px, 2.6vw, 28px)/1.35 var(--display); max-width: 30ch; letter-spacing: -.01em; text-wrap: balance; }
+.meta { display: flex; gap: 10px 28px; flex-wrap: wrap; margin-top: 28px; color: var(--muted); font-size: 15px; }
+.meta b { color: var(--ink); font-weight: 600; }
+
+/* Featured project: the pipeline */
+.feature { display: grid; grid-template-columns: 1fr; gap: 28px; }
+.feature-head { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 32px; align-items: end; }
+.feature-head p { color: var(--muted); max-width: 62ch; }
+.pipe { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--panel); }
+.stage { padding: 22px 18px; position: relative; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px; }
+.stage:last-child { border-right: 0; }
+.stage:not(:last-child)::after {
+  content: ""; position: absolute; right: -7px; top: 50%; width: 12px; height: 12px; background: var(--panel);
+  border-top: 1px solid var(--line); border-right: 1px solid var(--line); transform: translateY(-50%) rotate(45deg); z-index: 1;
+}
+.stage .big { font: 600 clamp(22px, 2.6vw, 30px)/1 var(--mono); font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+.stage .big.accent { color: var(--accent); }
+.stage .what { font-size: 14px; color: var(--muted); line-height: 1.4; }
+.stage .step { font: 600 11px/1 var(--mono); letter-spacing: .1em; color: var(--muted); }
+.stack { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { font: 500 13px/1 var(--mono); padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; }
+.more { font-weight: 600; }
+
+/* Other projects */
+.projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; margin-top: 40px; border-top: 1px solid var(--line); }
+.project { padding: 28px 28px 28px 0; display: flex; flex-direction: column; gap: 12px; }
+.project + .project { padding: 28px 0 28px 28px; border-left: 1px solid var(--line); }
+.project p { color: var(--muted); }
+.project .kicker { font: 600 12px/1 var(--mono); letter-spacing: .08em; color: var(--accent); text-transform: uppercase; }
+
+/* Ledger */
+.ledger { width: 100%; border-collapse: collapse; }
+.ledger th { text-align: left; font: 600 12px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 0 16px 14px 0; border-bottom: 1px solid var(--ink); }
+.ledger td { padding: 20px 16px 20px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.ledger td:last-child, .ledger th:last-child { padding-right: 0; text-align: right; }
+.role { font: 700 19px/1.25 var(--display); }
+.co { color: var(--muted); font-size: 15px; }
+.result { font: 600 22px/1.1 var(--mono); font-variant-numeric: tabular-nums; color: var(--accent); white-space: nowrap; }
+.result small { display: block; font: 400 13px/1.4 var(--body); color: var(--muted); white-space: normal; margin-top: 6px; }
+.when { font: 400 14px/1.4 var(--mono); color: var(--muted); white-space: nowrap; }
+.ledger-wrap { overflow-x: auto; }
+
+/* Toolkit */
+.kit { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.kit h3 { font-size: 17px; margin-bottom: 12px; }
+.kit ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.certs { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 15px; color: var(--muted); }
+.certs b { color: var(--ink); font-weight: 600; }
+
+/* Contact */
+.contact { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; align-items: end; }
+.contact h2 { margin: 0; max-width: 18ch; }
+.contact-links { display: grid; gap: 10px; font-size: 17px; }
+.contact-links .k { font: 600 12px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); display: inline-block; width: 82px; }
+footer { padding: 28px 0 40px; color: var(--muted); font-size: 13px; font-family: var(--mono); }
+
+@media (max-width: 860px) {
+  .feature-head { grid-template-columns: 1fr; }
+  .pipe { grid-template-columns: 1fr; }
+  .stage { border-right: 0; border-bottom: 1px solid var(--line); flex-direction: row; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  .stage:last-child { border-bottom: 0; }
+  .stage:not(:last-child)::after { right: auto; left: 28px; top: auto; bottom: -7px; transform: rotate(135deg); }
+  .projects { grid-template-columns: 1fr; }
+  .project, .project + .project { padding: 24px 0; border-left: 0; }
+  .project + .project { border-top: 1px solid var(--line); }
+  .kit { grid-template-columns: 1fr; gap: 24px; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 18px; }
+  .top { margin-bottom: 40px; }
+  .ledger thead { display: none; }
+  .ledger tr { display: grid; grid-template-columns: 1fr; gap: 6px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .ledger td { padding: 0; border: 0; }
+  .ledger td:last-child { text-align: left; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stage { animation: rise .5s ease-out both; }
+  .stage:nth-child(2) { animation-delay: .06s; } .stage:nth-child(3) { animation-delay: .12s; }
+  .stage:nth-child(4) { animation-delay: .18s; } .stage:nth-child(5) { animation-delay: .24s; }
+  @keyframes rise { from { transform: translateY(6px); } to { transform: none; } }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="top">
+    <div class="mark">AT · DALLAS, TX</div>
+    <nav class="links" aria-label="Profiles">
+      <a href="https://www.linkedin.com/in/anthonytrolio">LinkedIn</a>
+      <a href="https://github.com/atrolio02">GitHub</a>
+      <a href="https://cuocomeals.com">Cuoco</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+  <h1>Anthony <span>Trolio</span></h1>
+  <p class="thesis">I sell technical products, and I build the AI tools that help teams sell them.</p>
+  <div class="meta">
+    <span><b>Solutions engineering</b> · demos, discovery, POCs</span>
+    <span><b>GTM automation</b> · AI agents, RAG, MCP</span>
+    <span><b>Builder</b> · Python, TypeScript, AWS</span>
+  </div>
+</header>
+
+<section aria-labelledby="built">
+  <p class="label">What I've built</p>
+  <div class="feature">
+    <div class="feature-head">
+      <div>
+        <h2 id="built">Job Radar: an AI job-matching pipeline</h2>
+        <p>Free code does the volume and AI does the judgment. A GitHub Actions pipeline reads job boards through their APIs, filters and pre-scores every posting with rules, and hands only the promising ones to Claude through a remote MCP server I wrote. Every AI answer passes validation that blocks invented numbers or experience, and each run reports its own health.</p>
+      </div>
+      <div class="stack" aria-label="Built with">
+        <span class="chip">Python</span><span class="chip">GitHub Actions</span><span class="chip">TypeScript</span>
+        <span class="chip">Cloudflare Workers</span><span class="chip">MCP</span><span class="chip">REST APIs</span><span class="chip">Webhooks</span>
+      </div>
+    </div>
+    <div class="pipe" role="list" aria-label="How Job Radar works">
+      <div class="stage" role="listitem"><span class="step">01 READ</span><span class="big">540+</span><span class="what">company job boards, read in parallel</span></div>
+      <div class="stage" role="listitem"><span class="step">02 SCAN</span><span class="big">~74,000</span><span class="what">postings checked every weekday, in 3–4 minutes</span></div>
+      <div class="stage" role="listitem"><span class="step">03 FILTER</span><span class="big">$0</span><span class="what">rules filter and pre-score every job for free</span></div>
+      <div class="stage" role="listitem"><span class="step">04 JUDGE</span><span class="big">MCP</span><span class="what">Claude scores fit and drafts a tailored resume</span></div>
+      <div class="stage" role="listitem"><span class="step">05 ACT</span><span class="big accent">1 tap</span><span class="what">tracker card, alert and dashboard update</span></div>
+    </div>
+    <p><a class="more" href="https://github.com/atrolio02/job-radar-showcase">See the code and a sample dashboard →</a></p>
+  </div>
+
+  <div class="projects">
+    <article class="project">
+      <span class="kicker">Live product</span>
+      <h3><a href="https://cuocomeals.com">Cuoco</a></h3>
+      <p>An AI meal-planning web app I built and launched on a serverless AWS stack (Lambda, Cognito, DynamoDB, SES), with automated email and text notifications.</p>
+    </article>
+    <article class="project">
+      <span class="kicker">Open source</span>
+      <h3><a href="https://github.com/atrolio02/apartment-price-tracker">Apartment Price Tracker</a></h3>
+      <p>Alerts when rent hits a new low or a new unit is listed. Runs free on GitHub Actions, keeps a price history, and sends email or Discord alerts with a chart. Includes a setup guide so anyone can run it.</p>
+    </article>
+  </div>
+</section>
+
+<section aria-labelledby="record">
+  <p class="label">Track record</p>
+  <h2 id="record">From pipeline to POC to close</h2>
+  <div class="ledger-wrap">
+    <table class="ledger">
+      <thead><tr><th scope="col">Role</th><th scope="col">When</th><th scope="col">Result</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="role">Account Executive</div><div class="co">Paycom · Dallas, TX</div></td>
+          <td class="when">2026 – now</td>
+          <td><div class="result">$6.7M<small>qualified pipeline in my first 2 months, plus AI workflows saving each rep 8+ hours a week</small></div></td>
+        </tr>
+        <tr>
+          <td><div class="role">Solutions Engineer</div><div class="co">Tanium · Addison, TX</div></td>
+          <td class="when">2025 – 2026</td>
+          <td><div class="result">$1.28M<small>annual revenue attained, $387K net new; AI tooling cut SE admin time 60%</small></div></td>
+        </tr>
+        <tr>
+          <td><div class="role">Sales Development Representative</div><div class="co">Tanium · Addison, TX</div></td>
+          <td class="when">2024 – 2025</td>
+          <td><div class="result">121%<small>of annual quota; 36 net new enterprise opportunities worth $16.3M</small></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="toolkit">
+  <p class="label">Toolkit</p>
+  <h2 id="toolkit">What I work with</h2>
+  <div class="kit">
+    <div>
+      <h3>AI and automation</h3>
+      <ul><li class="chip">Claude</li><li class="chip">OpenAI</li><li class="chip">Gemini</li><li class="chip">Copilot</li><li class="chip">RAG</li><li class="chip">AI agents</li><li class="chip">MCP</li><li class="chip">Power Automate</li></ul>
+    </div>
+    <div>
+      <h3>Technical</h3>
+      <ul><li class="chip">Python</li><li class="chip">SQL</li><li class="chip">AWS</li><li class="chip">Snowflake</li><li class="chip">GitHub Actions</li><li class="chip">Linux</li><li class="chip">REST APIs</li><li class="chip">Webhooks</li></ul>
+    </div>
+    <div>
+      <h3>Sales stack</h3>
+      <ul><li class="chip">Salesforce</li><li class="chip">Outreach</li><li class="chip">Salesloft</li><li class="chip">6sense</li><li class="chip">ZoomInfo</li><li class="chip">Clari</li><li class="chip">MEDDPICC</li></ul>
+    </div>
+  </div>
+  <div class="certs">
+    <span><b>SnowPro Core</b> · Snowflake</span>
+    <span><b>Tanium Certified Operator</b></span>
+    <span><b>Cloud Essentials+</b> · CompTIA</span>
+    <span><b>Data Science</b> · General Assembly</span>
+    <span><b>B.S., Combined Science</b> · TCU</span>
+  </div>
+</section>
+
+<section id="contact" aria-labelledby="say-hi">
+  <div class="contact">
+    <h2 id="say-hi">Building something for sellers? Let's talk.</h2>
+    <div class="contact-links">
+      <div><span class="k">Email</span><a href="mailto:anthonytrolio@outlook.com">anthonytrolio@outlook.com</a></div>
+      <div><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/anthonytrolio">linkedin.com/in/anthonytrolio</a></div>
+      <div><span class="k">GitHub</span><a href="https://github.com/atrolio02">github.com/atrolio02</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Anthony Trolio · Dallas, Texas</footer>
+</div>
+</body>
+</html>
